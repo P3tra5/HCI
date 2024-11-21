@@ -35,6 +35,7 @@ type Page = {
       <li key={index}>
         <Link
           href={page.path}
+          aria-current={isActive ? "page" : undefined}
           className={`px-4 py-2 rounded-md transition-colors ${
             isActive
               ? "font-extrabold text-link-text"
