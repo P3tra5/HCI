@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+  description: "",
+};
+
 export default function ProfilePage() {
   return (
     <main className="flex min-h-screen flex-col items-center p-10">

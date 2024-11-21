@@ -24,13 +24,18 @@ const pages: Page[] = [
 ];
 
 function processPage(page: Page, index: number, pathname: string) {
+  const isActive = pathname === page.path;
+  
   return (
     <li key={index}>
       <Link
         href={page.path}
-        className={
-          pathname === page.path ? "font-extrabold text-slate-600" : ""
-        }
+        aria-current={isActive ? "page" : undefined}
+        className={`${
+          isActive
+            ? "font-extrabold text-link-text"
+            : "link-text hover:text-link-hover-text"
+        }`}
       >
         {page.title}
       </Link>
@@ -40,7 +45,6 @@ function processPage(page: Page, index: number, pathname: string) {
 
 export function Navigation() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <ul className="flex justify-center space-x-4 mt-8">
       {pages.map((page, index) => processPage(page, index, pathname))}

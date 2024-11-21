@@ -1,3 +1,11 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Community",
+  description: "",
+};
+
+
 export default function CommunityPage() {
   return (
     <main className="flex min-h-screen flex-col items-center p-10">

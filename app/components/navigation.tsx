@@ -29,19 +29,17 @@ type Page = {
   ];
   
   function processPage(page: Page, index: number, pathname: string) {
+    const isActive = page.path === "/" ? pathname === page.path : pathname.startsWith(page.path);
+
     return (
       <li key={index}>
         <Link
           href={page.path}
-          className={
-            page.path === "/"
-              ? pathname === page.path
-                ? "font-extrabold"
-                : ""
-              : pathname.startsWith(page.path)
-              ? "font-extrabold"
-              : ""
-          }
+          className={`px-4 py-2 rounded-md transition-colors ${
+            isActive
+              ? "font-extrabold text-link-text"
+              : "text-link-text hover:text-link-hover-text" 
+          }`}
         >
           {page.title}
         </Link>
@@ -52,9 +50,17 @@ type Page = {
   export function Navigation() {
     const pathname = usePathname();
     return (
-      <ul className="flex space-x-4 mb-4">
-        {pages.map((page, index) => processPage(page, index, pathname))}
-      </ul>
+      <nav className="bg-navbar-bg shadow-lg py-4 px-8 sticky top-0 z-50">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/" className="text-xl font-bold text-link-text hover:text-link-hover-text">
+            *Logo*  {/*dodat logo*/}
+          </Link>
+
+          <ul className="flex space-x-6">
+            {pages.map((page, index) => processPage(page, index, pathname))}
+          </ul>
+      </div>
+    </nav>
     );
   }
   

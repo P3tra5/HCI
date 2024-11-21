@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile | Lending history",
+  description: "View all tools you've borrowed.",
+};
+
 export default function ProfileHistoryPage() {
     return (
       <main className="flex min-h-screen flex-col items-center p-10">
